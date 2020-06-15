@@ -2,30 +2,25 @@ package com.emekachukwulobe.diceroller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import com.emekachukwulobe.diceroller.databinding.ActivityMainBinding
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var rollButton: Button
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        rollButton = findViewById(R.id.roll_button)
-
-        rollButton.setOnClickListener{
+        binding.rollButton.setOnClickListener{
             rollDice()
         }
     }
 
     private fun rollDice() {
-        var diceImage: ImageView = findViewById(R.id.dice_image)
-
         val randomInt = Random.nextInt(6) + 1
 
         var diceImageResource = when (randomInt){
@@ -37,6 +32,6 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
 
-        diceImage.setImageResource(diceImageResource)
+        binding.diceImage.setImageResource(diceImageResource)
     }
 }
