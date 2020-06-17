@@ -2,6 +2,7 @@ package com.emekachukwulobe.diceroller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.emekachukwulobe.diceroller.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
+        val view: View = binding.root
         setContentView(view)
 
         binding.rollButton.setOnClickListener{
